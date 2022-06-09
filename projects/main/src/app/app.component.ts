@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
+import { registerMicroApps, start } from 'qiankun';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'main';
+  title = 'angular-base';
+
+  constructor(private ngZone: NgZone) {
+    (window as any).ngZone = this.ngZone // store reference on window to be used by element during its bootstrap
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    registerMicroApps([
+      {
+        name: 'angularSub',
+        entry: '//localhost:4201',
+        container: '#subapp',
+        activeRule: '/angular-sub',
+      },
+      {
+        name: 'angularSub2',
+        entry: '//localhost:4202',
+        container: '#subapp',
+        activeRule: '/angular-sub2',
+      }
+    ]);
+
+    // 启动 qiankun
+    start();
+  }
 }

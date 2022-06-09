@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <p>
       hello-world works!
     </p>
+     <lib-my-lib2></lib-my-lib2>
   `,
   styles: [
   ]
