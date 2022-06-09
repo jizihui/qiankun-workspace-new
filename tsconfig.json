@@ -7,6 +7,14 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
+    "paths": {
+       "hello-world": [
+        "projects/my-lib1/src/public-api.ts"
+      ],
+      "my-lib2": [
+        "projects/my-lib2/src/public-api.ts"
+      ]
+    },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

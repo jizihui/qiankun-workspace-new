@@ -1,12 +1,21 @@
 {
   "name": "qiankun-workspace-new",
   "version": "0.0.0",
+  "workspaces": [
+    "projects/*"
+  ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm-run-all --parallel start:*",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:main": "ng serve main --port 4200",
+    "start:demo": "ng serve my-first-app --port 4201",
+    "start:demo2": "ng serve my-second-app --port 4202",
+    "build:lib:hello-world": "ng build hello-world",
+    "build:lib:dog-dog": "ng build dog-dog",
+    "build:all": "npm-run-all -p build:lib:* --max-parallel 8"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +32,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~13.3.7",
     "@angular/cli": "~13.3.5",
     "@angular/compiler-cli": "~13.3.0",
     "@types/jasmine": "~3.10.0",
@@ -33,6 +43,8 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "lerna": "^4.0.0",
+    "ng-packagr": "^13.0.0",
     "typescript": "~4.6.2"
   }
 }
