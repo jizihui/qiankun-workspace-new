@@ -17,6 +17,10 @@ const routes: Routes = [
     component: EmptyComponent
   },
   {
+    path: 'angular-sub2/home2',
+    component: EmptyComponent
+  },
+  {
     path: 'hero',
     component:HeroComponent
   }
